@@ -1,134 +1,103 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <meta http-equiv="Content-Style-Type" content="text/css">
-  <title></title>
-  <meta name="Generator" content="Cocoa HTML Writer">
-  <meta name="CocoaVersion" content="2685.3">
-  <style type="text/css">
-    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #88b966}
-    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #d65562}
-    p.p3 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #9ba2b1}
-    p.p4 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #9ba2b1; min-height: 16.0px}
-    p.p5 {margin: 0.0px 0.0px 0.0px 0.0px; font: 13.0px '.AppleSystemUIFontMonospaced'; color: #4a505d}
-    span.s1 {color: #b85dd5}
-    span.s2 {color: #9ba2b1}
-    span.s3 {color: #d65562}
-    span.s4 {color: #c58853}
-    span.s5 {color: #88b966}
-    span.s6 {color: #48a8b5}
-    span.s7 {color: #4a505d}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Live Interest Earned</title>
+  <style>
+    body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial; margin: 24px; line-height: 1.35; }
+    .card { max-width: 760px; padding: 18px; border: 1px solid #ddd; border-radius: 14px; }
+    label { display:block; margin: 10px 0 6px; font-weight: 600; }
+    input, select { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 10px; font-size: 16px; }
+    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
+    .big { font-size: 44px; font-weight: 900; margin: 10px 0 0; }
+    .muted { color:#555; }
+    .mono { font-variant-numeric: tabular-nums; }
+    .row { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #ddd; }
   </style>
 </head>
 <body>
-<p class="p1">&lt;!doctype <span class="s1">html</span>&gt;</p>
-<p class="p2"><span class="s2">&lt;</span>html<span class="s2">&gt;</span></p>
-<p class="p2"><span class="s2">&lt;</span>head<span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">  </span>&lt;<span class="s3">meta</span> <span class="s4">charset</span>=<span class="s5">"utf-8"</span> /&gt;</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">  </span>&lt;</span><span class="s3">meta</span><span class="s2"> </span><span class="s4">name</span><span class="s2">=</span>"viewport"<span class="s2"> </span><span class="s4">content</span><span class="s2">=</span>"width=device-width, initial-scale=1"<span class="s2"> /&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">  </span>&lt;<span class="s3">title</span>&gt;Live Interest Earned&lt;/<span class="s3">title</span>&gt;</p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">  </span>&lt;</span>style<span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s3">body</span> { <span class="s5">font-family</span>: system-ui, -apple-system, Segoe UI, Roboto, Arial; <span class="s5">margin</span>: <span class="s4">24px</span>; <span class="s5">line-height</span>: <span class="s4">1.35</span>; }</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s4">.card</span><span class="s2"> { </span>max-width<span class="s2">: </span><span class="s4">780px</span><span class="s2">; </span>padding<span class="s2">: </span><span class="s4">18px</span><span class="s2">; </span>border<span class="s2">: </span><span class="s4">1px</span><span class="s2"> solid </span><span class="s4">#ddd</span><span class="s2">; </span>border-radius<span class="s2">: </span><span class="s4">14px</span><span class="s2">; }</span></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s3">label</span> { <span class="s5">display</span>: block; <span class="s5">margin</span>: <span class="s4">10px</span> <span class="s4">0</span> <span class="s4">6px</span>; <span class="s5">font-weight</span>: <span class="s4">600</span>; }</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s3">input</span><span class="s2">, </span><span class="s3">select</span><span class="s2"> { </span>width<span class="s2">: </span><span class="s4">100%</span><span class="s2">; </span>padding<span class="s2">: </span><span class="s4">10px</span><span class="s2"> </span><span class="s4">12px</span><span class="s2">; </span>border<span class="s2">: </span><span class="s4">1px</span><span class="s2"> solid </span><span class="s4">#ccc</span><span class="s2">; </span>border-radius<span class="s2">: </span><span class="s4">10px</span><span class="s2">; </span>font-size<span class="s2">: </span><span class="s4">16px</span><span class="s2">; }</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s4">.grid</span><span class="s2"> { </span>display<span class="s2">: grid; </span>grid-template-columns<span class="s2">: </span><span class="s4">1</span><span class="s2">fr </span><span class="s4">1</span><span class="s2">fr; </span>gap<span class="s2">: </span><span class="s4">14px</span><span class="s2">; }</span></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s4">.big</span><span class="s2"> { </span>font-size<span class="s2">: </span><span class="s4">44px</span><span class="s2">; </span>font-weight<span class="s2">: </span><span class="s4">900</span><span class="s2">; </span>margin<span class="s2">: </span><span class="s4">10px</span><span class="s2"> </span><span class="s4">0</span><span class="s2"> </span><span class="s4">0</span><span class="s2">; }</span></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s4">.muted</span> { <span class="s5">color</span>: <span class="s4">#555</span>; }</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s4">.mono</span> { <span class="s5">font-variant-numeric</span>: tabular-nums; }</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span></span><span class="s4">.row</span><span class="s2"> { </span>margin-top<span class="s2">: </span><span class="s4">14px</span><span class="s2">; </span>padding-top<span class="s2">: </span><span class="s4">14px</span><span class="s2">; </span>border-top<span class="s2">: </span><span class="s4">1px</span><span class="s2"> dashed </span><span class="s4">#ddd</span><span class="s2">; }</span></p>
-<p class="p3"><span class="Apple-converted-space">  </span>&lt;/<span class="s3">style</span>&gt;</p>
-<p class="p2"><span class="s2">&lt;/</span>head<span class="s2">&gt;</span></p>
-<p class="p2"><span class="s2">&lt;</span>body<span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">  </span>&lt;<span class="s3">div</span> <span class="s4">class</span>=<span class="s5">"card"</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s3">h1</span> <span class="s4">style</span>=<span class="s5">"margin:0 0 6px;"</span>&gt;Live Interest Earned&lt;/<span class="s3">h1</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s3">div</span> <span class="s4">class</span>=<span class="s5">"muted"</span>&gt;This page displays &lt;<span class="s3">b</span>&gt;interest only&lt;/<span class="s3">b</span>&gt; (principal is not shown). Updates every second.&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p4"><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;</span><span class="s3">div</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span>"grid"<span class="s2"> </span><span class="s4">style</span><span class="s2">=</span>"margin-top:12px;"<span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">        </span>&lt;<span class="s3">label</span>&gt;APR (%)&lt;/<span class="s3">label</span>&gt;</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">        </span>&lt;</span><span class="s3">input</span><span class="s2"> </span><span class="s4">id</span><span class="s2">=</span>"apr"<span class="s2"> </span><span class="s4">type</span><span class="s2">=</span>"number"<span class="s2"> </span><span class="s4">step</span><span class="s2">=</span>"0.0001"<span class="s2"> </span><span class="s4">value</span><span class="s2">=</span>"5"<span class="s2"> /&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">        </span>&lt;<span class="s3">label</span>&gt;Mode&lt;/<span class="s3">label</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">        </span>&lt;<span class="s3">select</span> <span class="s4">id</span>=<span class="s5">"mode"</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">          </span>&lt;<span class="s3">option</span> <span class="s4">value</span>=<span class="s5">"simple"</span>&gt;Simple interest (linear)&lt;/<span class="s3">option</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">          </span>&lt;<span class="s3">option</span> <span class="s4">value</span>=<span class="s5">"continuous"</span>&gt;Continuous compounding (smooth)&lt;/<span class="s3">option</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">        </span>&lt;/<span class="s3">select</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s3">label</span> <span class="s4">style</span>=<span class="s5">"margin-top:12px;"</span>&gt;Start time (when accrual begins)&lt;/<span class="s3">label</span>&gt;</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;</span><span class="s3">input</span><span class="s2"> </span><span class="s4">id</span><span class="s2">=</span>"start"<span class="s2"> </span><span class="s4">type</span><span class="s2">=</span>"datetime-local"<span class="s2"> /&gt;</span></p>
-<p class="p4"><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">    </span></span>&lt;!-- Principal is used for the calculation but hidden from display --&gt;</p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s3">label</span> <span class="s4">style</span>=<span class="s5">"margin-top:12px;"</span>&gt;Principal (hidden from viewers)&lt;/<span class="s3">label</span>&gt;</p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">    </span>&lt;</span><span class="s3">input</span><span class="s2"> </span><span class="s4">id</span><span class="s2">=</span>"principal"<span class="s2"> </span><span class="s4">type</span><span class="s2">=</span>"password"<span class="s2"> </span><span class="s4">step</span><span class="s2">=</span>"0.01"<span class="s2"> </span><span class="s4">value</span><span class="s2">=</span>"100000"<span class="s2"> /&gt;</span></p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;<span class="s3">div</span> <span class="s4">class</span>=<span class="s5">"row"</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s3">div</span> <span class="s4">class</span>=<span class="s5">"muted"</span>&gt;Interest accrued&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s3">div</span> <span class="s4">id</span>=<span class="s5">"interest"</span> <span class="s4">class</span>=<span class="s5">"big mono"</span>&gt;$0.00&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p4"><br></p>
-<p class="p1"><span class="s2"><span class="Apple-converted-space">      </span>&lt;</span><span class="s3">div</span><span class="s2"> </span><span class="s4">class</span><span class="s2">=</span>"muted"<span class="s2"> </span><span class="s4">style</span><span class="s2">=</span>"margin-top:12px;"<span class="s2">&gt;Elapsed time: &lt;</span><span class="s3">span</span><span class="s2"> </span><span class="s4">id</span><span class="s2">=</span>"elapsed"<span class="s2"> </span><span class="s4">class</span><span class="s2">=</span>"mono"<span class="s2">&gt;&lt;/</span><span class="s3">span</span><span class="s2">&gt;&lt;/</span><span class="s3">div</span><span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">      </span>&lt;<span class="s3">div</span> <span class="s4">class</span>=<span class="s5">"muted"</span> <span class="s4">style</span>=<span class="s5">"margin-top:6px;"</span>&gt;Tip: you can “lock in” the principal by setting it once, then just share the link.&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">    </span>&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p3"><span class="Apple-converted-space">  </span>&lt;/<span class="s3">div</span>&gt;</p>
-<p class="p4"><br></p>
-<p class="p2"><span class="s2">&lt;</span>script<span class="s2">&gt;</span></p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> principalEl = document.getElementById(<span class="s5">'principal'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> aprEl = document.getElementById(<span class="s5">'apr'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> startEl = document.getElementById(<span class="s5">'start'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> interestEl = document.getElementById(<span class="s5">'interest'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> elapsedEl = document.getElementById(<span class="s5">'elapsed'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> modeEl = document.getElementById(<span class="s5">'mode'</span>);</p>
-<p class="p4"><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span>// Default start time = now (local)</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> now = <span class="s1">new</span> Date();</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> pad = n =&gt; String(n).padStart(<span class="s4">2</span>,<span class="s5">'0'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> local = <span class="s1">new</span> Date(now.getTime() - now.getTimezoneOffset()*<span class="s4">60000</span>);</p>
-<p class="p2"><span class="s2"><span class="Apple-converted-space">  </span>startEl.value = </span><span class="s5">`</span>${local.getFullYear()}<span class="s5">-</span>${pad(local.getMonth()+<span class="s4">1</span>)}<span class="s5">-</span>${pad(local.getDate())}<span class="s5">T</span>${pad(local.getHours())}<span class="s5">:</span>${pad(local.getMinutes())}<span class="s5">`</span><span class="s2">;</span></p>
-<p class="p4"><br></p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span>// Optional URL parameters (so you can share a pre-set link):</p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">  </span></span>// ?p=100000&amp;apr=5&amp;start=2026-02-11T20:00:00&amp;mode=continuous</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> params = <span class="s1">new</span> URLSearchParams(location.search);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">if</span> (params.has(<span class="s5">'p'</span>)) principalEl.value = params.get(<span class="s5">'p'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">if</span> (params.has(<span class="s5">'apr'</span>)) aprEl.value = params.get(<span class="s5">'apr'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">if</span> (params.has(<span class="s5">'mode'</span>)) modeEl.value = params.get(<span class="s5">'mode'</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">if</span> (params.has(<span class="s5">'start'</span>)) {</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> s = params.get(<span class="s5">'start'</span>).replace(<span class="s5">' '</span>, <span class="s5">'T'</span>);</p>
-<p class="p5"><span class="s2"><span class="Apple-converted-space">    </span>startEl.value = s.slice(</span><span class="s4">0</span><span class="s2">,</span><span class="s4">16</span><span class="s2">); </span>// datetime-local expects YYYY-MM-DDTHH:MM</p>
-<p class="p3"><span class="Apple-converted-space">  </span>}</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> fmt = <span class="s1">new</span> Intl.NumberFormat(<span class="s6">undefined</span>, { <span class="s4">style</span>:<span class="s5">'currency'</span>, <span class="s4">currency</span>:<span class="s5">'USD'</span> });</p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">const</span> SECONDS_PER_YEAR = <span class="s4">365.2425</span> * <span class="s4">24</span> * <span class="s4">60</span> * <span class="s4">60</span>;</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">  </span><span class="s1">function</span> calc() {</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> P = Math.max(<span class="s4">0</span>, Number(principalEl.value || <span class="s4">0</span>)); <span class="Apple-converted-space">    </span><span class="s7">// hidden principal</span></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> r = Math.max(<span class="s4">0</span>, Number(aprEl.value || <span class="s4">0</span>)) / <span class="s4">100</span>;</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> start = <span class="s1">new</span> Date(startEl.value);</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> tSeconds = Math.max(<span class="s4">0</span>, (Date.now() - start.getTime()) / <span class="s4">1000</span>);</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> tYears = tSeconds / SECONDS_PER_YEAR;</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">let</span> total;</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">if</span> (modeEl.value === <span class="s5">'continuous'</span>) total = P * Math.exp(r * tYears);</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">else</span> total = P * (<span class="s4">1</span> + r * tYears);</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> interest = total - P;</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span>interestEl.textContent = fmt.format(interest);</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> hrs = Math.floor(tSeconds / <span class="s4">3600</span>);</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> mins = Math.floor((tSeconds % <span class="s4">3600</span>) / <span class="s4">60</span>);</p>
-<p class="p3"><span class="Apple-converted-space">    </span><span class="s1">const</span> secs = Math.floor(tSeconds % <span class="s4">60</span>);</p>
-<p class="p3"><span class="Apple-converted-space">    </span>elapsedEl.textContent = <span class="s5">`</span><span class="s3">${hrs}</span><span class="s5">h </span><span class="s3">${mins}</span><span class="s5">m </span><span class="s3">${secs}</span><span class="s5">s`</span>;</p>
-<p class="p3"><span class="Apple-converted-space">  </span>}</p>
-<p class="p4"><br></p>
-<p class="p3"><span class="Apple-converted-space">  </span>setInterval(calc, <span class="s4">1000</span>);</p>
-<p class="p3"><span class="Apple-converted-space">  </span>calc();</p>
-<p class="p2"><span class="s2">&lt;/</span>script<span class="s2">&gt;</span></p>
-<p class="p2"><span class="s2">&lt;/</span>body<span class="s2">&gt;</span></p>
-<p class="p2"><span class="s2">&lt;/</span>html<span class="s2">&gt;</span></p>
+  <div class="card">
+    <h1 style="margin:0 0 6px;">Live Interest Earned</h1>
+    <div class="muted">Interest only (principal not displayed). Updates every second.</div>
+
+    <div class="grid">
+      <div>
+        <label>APR (%)</label>
+        <input id="apr" type="number" step="0.0001" value="5">
+      </div>
+      <div>
+        <label>Mode</label>
+        <select id="mode">
+          <option value="simple">Simple interest (linear)</option>
+          <option value="continuous">Continuous compounding (smooth)</option>
+        </select>
+      </div>
+    </div>
+
+    <label style="margin-top:12px;">Start time (when accrual begins)</label>
+    <input id="start" type="datetime-local">
+
+    <label style="margin-top:12px;">Principal (hidden)</label>
+    <input id="principal" type="password" inputmode="decimal" value="100000">
+
+    <div class="row">
+      <div class="muted">Interest accrued</div>
+      <div id="interest" class="big mono">$0.0000</div>
+      <div class="muted" style="margin-top:12px;">Elapsed time: <span id="elapsed" class="mono"></span></div>
+    </div>
+  </div>
+
+<script>
+(function () {
+  var principalEl = document.getElementById('principal');
+  var aprEl = document.getElementById('apr');
+  var startEl = document.getElementById('start');
+  var interestEl = document.getElementById('interest');
+  var elapsedEl = document.getElementById('elapsed');
+  var modeEl = document.getElementById('mode');
+
+  function pad(n){ return String(n).padStart(2,'0'); }
+
+  // Set default start = now (local)
+  var now = new Date();
+  var local = new Date(now.getTime() - now.getTimezoneOffset()*60000);
+  startEl.value = local.getFullYear() + '-' + pad(local.getMonth()+1) + '-' + pad(local.getDate()) +
+                  'T' + pad(local.getHours()) + ':' + pad(local.getMinutes());
+
+  var fmt = new Intl.NumberFormat(undefined, {
+    style: 'currency',
+    currency: 'USD',
+    minimumFractionDigits: 4,
+    maximumFractionDigits: 6
+  });
+
+  var SECONDS_PER_YEAR = 365.2425 * 24 * 60 * 60;
+
+  function calc(){
+    var P = Math.max(0, Number(principalEl.value || 0));
+    var r = Math.max(0, Number(aprEl.value || 0)) / 100;
+
+    var start = new Date(startEl.value);
+    var tSeconds = Math.max(0, (Date.now() - start.getTime()) / 1000);
+    var tYears = tSeconds / SECONDS_PER_YEAR;
+
+    var total;
+    if (modeEl.value === 'continuous') total = P * Math.exp(r * tYears);
+    else total = P * (1 + r * tYears);
+
+    var interest = total - P;
+    interestEl.textContent = fmt.format(interest);
+
+    var hrs = Math.floor(tSeconds / 3600);
+    var mins = Math.floor((tSeconds % 3600) / 60);
+    var secs = Math.floor(tSeconds % 60);
+    elapsedEl.textContent = hrs + 'h ' + mins + 'm ' + secs + 's';
+  }
+
+  setInterval(calc, 1000);
+  calc();
+})();
+</script>
 </body>
 </html>
