@@ -1,103 +1,184 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live Interest Earned</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Estate Delay Counter</title>
   <style>
-    body { font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial; margin: 24px; line-height: 1.35; }
-    .card { max-width: 760px; padding: 18px; border: 1px solid #ddd; border-radius: 14px; }
-    label { display:block; margin: 10px 0 6px; font-weight: 600; }
-    input, select { width: 100%; padding: 10px 12px; border: 1px solid #ccc; border-radius: 10px; font-size: 16px; }
-    .grid { display:grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 12px; }
-    .big { font-size: 44px; font-weight: 900; margin: 10px 0 0; }
-    .muted { color:#555; }
-    .mono { font-variant-numeric: tabular-nums; }
-    .row { margin-top: 14px; padding-top: 14px; border-top: 1px dashed #ddd; }
+    body {
+      font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial;
+      margin: 24px;
+      line-height: 1.4;
+      background: #fff;
+    }
+
+    .card {
+      max-width: 1050px;
+      padding: 30px;
+      border: 2px solid #111;
+      border-radius: 18px;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 30px;
+      font-weight: 950;
+      letter-spacing: -0.2px;
+    }
+
+    .subhead {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 750;
+      color: #111;
+    }
+
+    .big {
+      margin-top: 22px;
+      font-size: 92px;
+      font-weight: 1000;
+      letter-spacing: -1px;
+      line-height: 1;
+    }
+
+    .label {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: 850;
+      color: #111;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .mono {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .details {
+      margin-top: 34px;
+      padding-top: 24px;
+      border-top: 2px dashed #111;
+    }
+
+    .details h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 950;
+    }
+
+    .details .lead {
+      margin-top: 10px;
+      font-size: 16px;
+      font-weight: 750;
+      color: #111;
+    }
+
+    ol {
+      margin-top: 14px;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 14px;
+      font-size: 16px;
+      font-weight: 650;
+      color: #111;
+    }
+
+    .stamp {
+      margin-top: 16px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #333;
+    }
   </style>
 </head>
 <body>
   <div class="card">
-    <h1 style="margin:0 0 6px;">Live Interest Earned</h1>
-    <div class="muted">Interest only (principal not displayed). Updates every second.</div>
 
-    <div class="grid">
-      <div>
-        <label>APR (%)</label>
-        <input id="apr" type="number" step="0.0001" value="5">
+    <h1>
+      The number of days the estate has been held up waiting for a decision from Nicola on whether to engage Dutta International or not
+    </h1>
+
+    <div class="subhead">
+      This counter runs continuously. Every day on it is a day of deliberate inaction.
+    </div>
+
+    <div class="big mono" id="counter">0 days 00:00:00</div>
+    <div class="label">Elapsed time since June 24, 2025</div>
+
+    <div class="details">
+      <h2>Until Nicola responds:</h2>
+      <div class="lead">
+        The following work remains frozen — not because it’s complex, but because authority is being withheld.
       </div>
-      <div>
-        <label>Mode</label>
-        <select id="mode">
-          <option value="simple">Simple interest (linear)</option>
-          <option value="continuous">Continuous compounding (smooth)</option>
-        </select>
+
+      <ol>
+        <li>
+          No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.
+        </li>
+
+        <li>
+          The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.
+        </li>
+
+        <li>
+          The Falcon Oil Shares cannot be sold.
+        </li>
+
+        <li>
+          No further condominium expenses can be paid.
+        </li>
+
+        <li>
+          No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service. This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.
+        </li>
+
+        <li>
+          Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.
+        </li>
+      </ol>
+
+      <div class="stamp">
+        Start date used for the counter: <span class="mono">June 24, 2025 00:00:00 (local time)</span>
       </div>
     </div>
 
-    <label style="margin-top:12px;">Start time (when accrual begins)</label>
-    <input id="start" type="datetime-local">
-
-    <label style="margin-top:12px;">Principal (hidden)</label>
-    <input id="principal" type="password" inputmode="decimal" value="100000">
-
-    <div class="row">
-      <div class="muted">Interest accrued</div>
-      <div id="interest" class="big mono">$0.0000</div>
-      <div class="muted" style="margin-top:12px;">Elapsed time: <span id="elapsed" class="mono"></span></div>
-    </div>
   </div>
 
 <script>
 (function () {
-  var principalEl = document.getElementById('principal');
-  var aprEl = document.getElementById('apr');
-  var startEl = document.getElementById('start');
-  var interestEl = document.getElementById('interest');
-  var elapsedEl = document.getElementById('elapsed');
-  var modeEl = document.getElementById('mode');
+  // Start date: June 24, 2025 at 00:00:00 LOCAL time
+  // (month is 0-based: 5 = June)
+  var start = new Date(2025, 5, 24, 0, 0, 0);
 
-  function pad(n){ return String(n).padStart(2,'0'); }
+  var counterEl = document.getElementById('counter');
 
-  // Set default start = now (local)
-  var now = new Date();
-  var local = new Date(now.getTime() - now.getTimezoneOffset()*60000);
-  startEl.value = local.getFullYear() + '-' + pad(local.getMonth()+1) + '-' + pad(local.getDate()) +
-                  'T' + pad(local.getHours()) + ':' + pad(local.getMinutes());
+  function pad2(n) { return String(n).padStart(2, '0'); }
 
-  var fmt = new Intl.NumberFormat(undefined, {
-    style: 'currency',
-    currency: 'USD',
-    minimumFractionDigits: 4,
-    maximumFractionDigits: 6
-  });
+  function tick() {
+    var now = new Date();
+    var diffMs = now.getTime() - start.getTime();
+    if (diffMs < 0) diffMs = 0;
 
-  var SECONDS_PER_YEAR = 365.2425 * 24 * 60 * 60;
+    var totalSeconds = Math.floor(diffMs / 1000);
 
-  function calc(){
-    var P = Math.max(0, Number(principalEl.value || 0));
-    var r = Math.max(0, Number(aprEl.value || 0)) / 100;
+    var days = Math.floor(totalSeconds / 86400);
+    var remainder = totalSeconds % 86400;
 
-    var start = new Date(startEl.value);
-    var tSeconds = Math.max(0, (Date.now() - start.getTime()) / 1000);
-    var tYears = tSeconds / SECONDS_PER_YEAR;
+    var hours = Math.floor(remainder / 3600);
+    remainder = remainder % 3600;
 
-    var total;
-    if (modeEl.value === 'continuous') total = P * Math.exp(r * tYears);
-    else total = P * (1 + r * tYears);
+    var minutes = Math.floor(remainder / 60);
+    var seconds = remainder % 60;
 
-    var interest = total - P;
-    interestEl.textContent = fmt.format(interest);
-
-    var hrs = Math.floor(tSeconds / 3600);
-    var mins = Math.floor((tSeconds % 3600) / 60);
-    var secs = Math.floor(tSeconds % 60);
-    elapsedEl.textContent = hrs + 'h ' + mins + 'm ' + secs + 's';
+    counterEl.textContent = days + " days " + pad2(hours) + ":" + pad2(minutes) + ":" + pad2(seconds);
   }
 
-  setInterval(calc, 1000);
-  calc();
+  tick();
+  setInterval(tick, 1000);
 })();
 </script>
+
 </body>
 </html>
