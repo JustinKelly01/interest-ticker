@@ -1,160 +1,153 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Estate Delay Counter</title>
-  <style>
-    body {
-      font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial;
-      margin: 24px;
-      line-height: 1.4;
-      background: #fff;
-    }
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Estate Delay Counter</title>
 
-    .card {
-      max-width: 1050px;
-      padding: 30px;
-      border: 2px solid #111;
-      border-radius: 18px;
-    }
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  font-family: -apple-system, system-ui, Segoe UI, Roboto, Arial;
+  background: #ffffff;
+  color: #111;
+}
 
-    h1 {
-      margin: 0;
-      font-size: 30px;
-      font-weight: 950;
-      letter-spacing: -0.2px;
-    }
+/* Full bleed red counter block */
+.counter-block {
+  width: 100%;
+  background: #c40000;
+  color: #ffffff;
+  text-align: center;
+  padding: 80px 20px;
+}
 
-    .subhead {
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: 750;
-      color: #111;
-    }
+.counter-main {
+  font-size: 110px;
+  font-weight: 1000;
+  letter-spacing: -2px;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
 
-    .big {
-      margin-top: 22px;
-      font-size: 92px;
-      font-weight: 1000;
-      letter-spacing: -1px;
-      line-height: 1;
-    }
+.counter-hours {
+  margin-top: 18px;
+  font-size: 34px;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+}
 
-    .label {
-      margin-top: 10px;
-      font-size: 18px;
-      font-weight: 850;
-      color: #111;
-      text-transform: uppercase;
-      letter-spacing: 0.6px;
-    }
+/* Subtle pulse animation */
+@keyframes pulse {
+  0% { opacity: 1; }
+  50% { opacity: 0.6; }
+  100% { opacity: 1; }
+}
 
-    .mono {
-      font-variant-numeric: tabular-nums;
-    }
+.pulse {
+  display: inline-block;
+  animation: pulse 1s ease-in-out infinite;
+}
 
-    .details {
-      margin-top: 34px;
-      padding-top: 24px;
-      border-top: 2px dashed #111;
-    }
+.content {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 24px 60px 24px;
+}
 
-    .details h2 {
-      margin: 0;
-      font-size: 22px;
-      font-weight: 950;
-    }
+h1 {
+  font-size: 30px;
+  font-weight: 950;
+  margin-bottom: 16px;
+}
 
-    .details .lead {
-      margin-top: 10px;
-      font-size: 16px;
-      font-weight: 750;
-      color: #111;
-    }
+.subhead {
+  font-size: 18px;
+  font-weight: 750;
+  margin-bottom: 28px;
+}
 
-    ol {
-      margin-top: 14px;
-      padding-left: 22px;
-    }
+.details {
+  margin-top: 20px;
+}
 
-    li {
-      margin-bottom: 14px;
-      font-size: 16px;
-      font-weight: 650;
-      color: #111;
-    }
+.details h2 {
+  font-size: 22px;
+  font-weight: 950;
+}
 
-    .stamp {
-      margin-top: 16px;
-      font-size: 14px;
-      font-weight: 700;
-      color: #333;
-    }
-  </style>
+.details .lead {
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 750;
+}
+
+ol {
+  margin-top: 14px;
+  padding-left: 22px;
+}
+
+li {
+  margin-bottom: 14px;
+  font-size: 16px;
+  font-weight: 650;
+}
+</style>
 </head>
+
 <body>
-  <div class="card">
 
-    <h1>
-      The number of days the estate has been held up waiting for a decision from Nicola on whether to engage Dutta International or not
-    </h1>
+<div class="content">
+  <h1>
+    The number of days the estate has been held up waiting for a decision from Nicola on whether to engage Dutta International or not
+  </h1>
 
-    <div class="subhead">
-      This counter runs continuously. Every day on it is a day of deliberate inaction.
-    </div>
-
-    <div class="big mono" id="counter">0 days 00:00:00</div>
-    <div class="label">Elapsed time since June 24, 2025</div>
-
-    <div class="details">
-      <h2>Until Nicola responds:</h2>
-      <div class="lead">
-        The following work remains frozen — not because it’s complex, but because authority is being withheld.
-      </div>
-
-      <ol>
-        <li>
-          No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.
-        </li>
-
-        <li>
-          The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.
-        </li>
-
-        <li>
-          The Falcon Oil Shares cannot be sold.
-        </li>
-
-        <li>
-          No further condominium expenses can be paid.
-        </li>
-
-        <li>
-          No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service. This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.
-        </li>
-
-        <li>
-          Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.
-        </li>
-      </ol>
-
-      <div class="stamp">
-        Start date used for the counter: <span class="mono">June 24, 2025 00:00:00 (local time)</span>
-      </div>
-    </div>
-
+  <div class="subhead">
+    This counter runs continuously. Every second on it represents further delay.
   </div>
+</div>
+
+<div class="counter-block">
+  <div class="counter-main" id="counter">
+    0 days 00:00:<span class="pulse">00</span>
+  </div>
+  <div class="counter-hours" id="hours">
+    0 total hours of delay
+  </div>
+</div>
+
+<div class="content">
+  <div class="details">
+    <h2>Until Nicola responds:</h2>
+
+    <div class="lead">
+      The following work remains frozen — not because it is complex, but because authority is being withheld.
+    </div>
+
+    <ol>
+      <li>No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.</li>
+      <li>The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.</li>
+      <li>The Falcon Oil Shares cannot be sold.</li>
+      <li>No further condominium expenses can be paid.</li>
+      <li>No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service. This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.</li>
+      <li>Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.</li>
+    </ol>
+  </div>
+</div>
 
 <script>
 (function () {
-  // Start date: June 24, 2025 at 00:00:00 LOCAL time
-  // (month is 0-based: 5 = June)
+
+  // June 24, 2025 at 00:00:00 local time
   var start = new Date(2025, 5, 24, 0, 0, 0);
 
   var counterEl = document.getElementById('counter');
+  var hoursEl = document.getElementById('hours');
 
-  function pad2(n) { return String(n).padStart(2, '0'); }
+  function pad2(n) {
+    return String(n).padStart(2, '0');
+  }
 
   function tick() {
     var now = new Date();
@@ -172,11 +165,21 @@
     var minutes = Math.floor(remainder / 60);
     var seconds = remainder % 60;
 
-    counterEl.textContent = days + " days " + pad2(hours) + ":" + pad2(minutes) + ":" + pad2(seconds);
+    var totalHours = Math.floor(totalSeconds / 3600);
+
+    counterEl.innerHTML =
+      days + " days " +
+      pad2(hours) + ":" +
+      pad2(minutes) + ":" +
+      "<span class='pulse'>" + pad2(seconds) + "</span>";
+
+    hoursEl.textContent =
+      totalHours + " total hours of delay";
   }
 
   tick();
   setInterval(tick, 1000);
+
 })();
 </script>
 
