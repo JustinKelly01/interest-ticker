@@ -14,31 +14,37 @@ html, body {
   color: #111;
 }
 
+/* Header section */
+.content {
+  max-width: 1000px;
+  margin: 20px auto 10px auto;
+  padding: 0 24px;
+}
+
+h1 {
+  font-size: 30px;
+  font-weight: 950;
+  margin: 0;
+}
+
 /* Full bleed red counter block */
 .counter-block {
   width: 100%;
   background: #c40000;
   color: #ffffff;
   text-align: center;
-  padding: 80px 20px;
+  padding: 60px 20px;
 }
 
 .counter-main {
-  font-size: 110px;
+  font-size: 120px;
   font-weight: 1000;
   letter-spacing: -2px;
   line-height: 1;
   font-variant-numeric: tabular-nums;
 }
 
-.counter-hours {
-  margin-top: 18px;
-  font-size: 34px;
-  font-weight: 800;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Subtle pulse animation */
+/* Subtle pulse animation for seconds */
 @keyframes pulse {
   0% { opacity: 1; }
   50% { opacity: 0.6; }
@@ -50,37 +56,32 @@ html, body {
   animation: pulse 1s ease-in-out infinite;
 }
 
-.content {
-  max-width: 1000px;
-  margin: 40px auto;
-  padding: 0 24px 60px 24px;
-}
-
-h1 {
-  font-size: 30px;
-  font-weight: 950;
-  margin-bottom: 16px;
-}
-
-.subhead {
+/* Centered statement under counter */
+.statement {
+  text-align: center;
   font-size: 18px;
   font-weight: 750;
-  margin-bottom: 28px;
+  margin: 20px 0 40px 0;
+  padding: 0 24px;
 }
 
+/* Detail section */
 .details {
-  margin-top: 20px;
+  max-width: 1000px;
+  margin: 0 auto 60px auto;
+  padding: 0 24px;
 }
 
 .details h2 {
   font-size: 22px;
   font-weight: 950;
+  margin-bottom: 10px;
 }
 
 .details .lead {
-  margin-top: 10px;
   font-size: 16px;
   font-weight: 750;
+  margin-bottom: 14px;
 }
 
 ol {
@@ -100,39 +101,40 @@ li {
 
 <div class="content">
   <h1>
-      Days The Estate Has Been Delayed Pending Nicola's Decision To Engage Dutta International For Advice:
+    Days The Estate Has Been Delayed Pending Nicola's Decision To Engage Dutta International For Advice.
   </h1>
-
 </div>
 
 <div class="counter-block">
   <div class="counter-main" id="counter">
     0 days 00:00:<span class="pulse">00</span>
   </div>
-  <div class="counter-hours" id="hours">
-    0 total hours of delay
-  </div>
 </div>
-<div class="subhead">
-    This counter runs continuously. Every second on it represents further delay.
-  </div>
-<div class="content">
-  <div class="details">
-    <h2>Until Nicola responds:</h2>
 
-    <div class="lead">
-      The following work remains frozen — not because it is complex, but because authority is being withheld.
-    </div>
+<div class="statement">
+  This counter runs continuously. Every second on it represents further delay.
+</div>
 
-    <ol>
-      <li>No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.</li>
-      <li>The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.</li>
-      <li>The Falcon Oil Shares cannot be sold.</li>
-      <li>No further condominium expenses can be paid.</li>
-      <li>No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service. This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.</li>
-      <li>Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.</li>
-    </ol>
+<div class="details">
+  <h2>Until Nicola responds:</h2>
+
+  <div class="lead">
+    The following work remains frozen — not because it is complex, but because authority is being withheld.
   </div>
+
+  <ol>
+    <li>No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.</li>
+
+    <li>The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.</li>
+
+    <li>The Falcon Oil Shares cannot be sold.</li>
+
+    <li>No further condominium expenses can be paid.</li>
+
+    <li>No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service. This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.</li>
+
+    <li>Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.</li>
+  </ol>
 </div>
 
 <script>
@@ -142,7 +144,6 @@ li {
   var start = new Date(2025, 5, 24, 0, 0, 0);
 
   var counterEl = document.getElementById('counter');
-  var hoursEl = document.getElementById('hours');
 
   function pad2(n) {
     return String(n).padStart(2, '0');
@@ -164,16 +165,11 @@ li {
     var minutes = Math.floor(remainder / 60);
     var seconds = remainder % 60;
 
-    var totalHours = Math.floor(totalSeconds / 3600);
-
     counterEl.innerHTML =
       days + " days " +
       pad2(hours) + ":" +
       pad2(minutes) + ":" +
       "<span class='pulse'>" + pad2(seconds) + "</span>";
-
-    hoursEl.textContent =
-      totalHours + " total hours of delay";
   }
 
   tick();
