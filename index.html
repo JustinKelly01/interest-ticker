@@ -63,8 +63,63 @@ h1 {
   text-align: center;
   font-size: 18px;
   font-weight: 750;
-  margin: 20px 0 40px 0;
+  margin: 20px 0 34px 0;
   padding: 0 24px;
+}
+
+/* Interest section */
+.interest-wrap {
+  max-width: 1000px;
+  margin: 0 auto 50px auto;
+  padding: 0 24px;
+}
+
+.interest-card {
+  border: 2px solid #111;
+  border-radius: 16px;
+  padding: 22px 22px;
+}
+
+.interest-title {
+  font-size: 22px;
+  font-weight: 950;
+  margin: 0 0 10px 0;
+}
+
+.interest-sub {
+  margin: 0 0 16px 0;
+  font-size: 16px;
+  font-weight: 750;
+  color: #111;
+}
+
+.interest-big {
+  font-size: 56px;
+  font-weight: 1000;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  margin: 4px 0 8px 0;
+}
+
+.interest-meta {
+  font-size: 15px;
+  font-weight: 700;
+  color: #333;
+  margin-top: 8px;
+  line-height: 1.4;
+}
+
+.kicker {
+  display: inline-block;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #ddd;
+  font-weight: 800;
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  color: #111;
+  background: #f6f6f6;
 }
 
 /* Detail section */
@@ -107,8 +162,9 @@ li {
   </h1>
 </div>
 
+<!-- Delay counter -->
 <div class="counter-block">
-  <div class="counter-main" id="counter">
+  <div class="counter-main" id="delayCounter">
     0 days 00:00:<span class="pulse">00</span>
   </div>
 </div>
@@ -117,6 +173,27 @@ li {
   This counter runs continuously. Every second on it represents further delay.
 </div>
 
+<!-- Interest counter -->
+<div class="interest-wrap">
+  <div class="interest-card">
+    <div class="kicker">Interest (simple daily)</div>
+    <h2 class="interest-title" style="margin-top:10px;">
+      Interest added since May 31, 2025 (on £250,000)
+    </h2>
+    <p class="interest-sub">
+      Calculated using the stated APR schedule. No compounding — simple interest only.
+    </p>
+
+    <div class="interest-big" id="interestTotal">£0.00</div>
+
+    <div class="interest-meta">
+      Current daily interest at <b>7.75%</b>: <span id="dailyAt775">£0.00</span> per day<br>
+      APR schedule: <b>8.5%</b> (May 31, 2025 → Aug 27, 2025), <b>8.0%</b> (Aug 27, 2025 → Jan 9, 2026), <b>7.75%</b> (Jan 9, 2026 → present)
+    </div>
+  </div>
+</div>
+
+<!-- Detail list -->
 <div class="details">
   <h2>Until Nicola responds:</h2>
 
@@ -127,7 +204,7 @@ li {
   <ol>
     <li>No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.</li>
 
-    <li>The estate cannot receive urgent tax advice from Dutta International.</li>
+    <li>The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%. Nicola will be held personally accountable for those costs by her co-executor while she holds up this urgent advice.</li>
 
     <li>The Falcon Oil Shares cannot be sold.</li>
 
@@ -141,19 +218,16 @@ li {
 
 <script>
 (function () {
-
+  // ---------- Delay counter ----------
   // June 24, 2025 at 00:00:00 local time
-  var start = new Date(2025, 5, 24, 0, 0, 0);
+  var delayStart = new Date(2025, 5, 24, 0, 0, 0);
+  var delayEl = document.getElementById('delayCounter');
 
-  var counterEl = document.getElementById('counter');
+  function pad2(n) { return String(n).padStart(2, '0'); }
 
-  function pad2(n) {
-    return String(n).padStart(2, '0');
-  }
-
-  function tick() {
+  function tickDelay() {
     var now = new Date();
-    var diffMs = now.getTime() - start.getTime();
+    var diffMs = now.getTime() - delayStart.getTime();
     if (diffMs < 0) diffMs = 0;
 
     var totalSeconds = Math.floor(diffMs / 1000);
@@ -167,16 +241,102 @@ li {
     var minutes = Math.floor(remainder / 60);
     var seconds = remainder % 60;
 
-    counterEl.innerHTML =
+    delayEl.innerHTML =
       days + " days " +
       pad2(hours) + ":" +
       pad2(minutes) + ":" +
       "<span class='pulse'>" + pad2(seconds) + "</span>";
   }
 
-  tick();
-  setInterval(tick, 1000);
+  // ---------- Interest counter (simple daily; smooth per-second) ----------
+  var principal = 250000; // GBP
+  var interestEl = document.getElementById('interestTotal');
+  var dailyEl = document.getElementById('dailyAt775');
 
+  // APR schedule (rate changes are effective at the START of these dates, local time)
+  // Interpretation:
+  // - 8.5% applies from May 31, 2025 00:00 up to (but not including) Aug 27, 2025 00:00
+  // - 8.0% applies from Aug 27, 2025 00:00 up to (but not including) Jan 9, 2026 00:00
+  // - 7.75% applies from Jan 9, 2026 00:00 onward
+  var seg1Start = new Date(2025, 4, 31, 0, 0, 0); // May 31, 2025
+  var seg2Start = new Date(2025, 7, 27, 0, 0, 0); // Aug 27, 2025
+  var seg3Start = new Date(2026, 0, 9, 0, 0, 0);  // Jan 9, 2026
+
+  var r1 = 0.085;
+  var r2 = 0.08;
+  var r3 = 0.0775;
+
+  var SECONDS_PER_DAY = 24 * 60 * 60;
+  var SECONDS_PER_YEAR = 365 * SECONDS_PER_DAY; // simple APR assumption
+
+  function formatGBP(amount) {
+    // Keep it visibly moving: 2dp for main number, but you can raise if you want ultra-smooth visuals
+    return new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  }
+
+  function formatGBP2(amount) {
+    return new Intl.NumberFormat('en-GB', {
+      style: 'currency',
+      currency: 'GBP',
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(amount);
+  }
+
+  function segmentInterest(P, rate, start, end) {
+    // Simple interest over elapsed seconds
+    var elapsedSeconds = (end.getTime() - start.getTime()) / 1000;
+    if (elapsedSeconds <= 0) return 0;
+    return P * rate * (elapsedSeconds / SECONDS_PER_YEAR);
+  }
+
+  function tickInterest() {
+    var now = new Date();
+
+    // If "now" is before the interest start, show zero
+    if (now.getTime() <= seg1Start.getTime()) {
+      interestEl.textContent = formatGBP(0);
+      dailyEl.textContent = formatGBP2(principal * r3 / 365);
+      return;
+    }
+
+    // Determine end points for each segment
+    var end1 = new Date(Math.min(now.getTime(), seg2Start.getTime()));
+    var end2 = new Date(Math.min(now.getTime(), seg3Start.getTime()));
+    var end3 = now;
+
+    var total = 0;
+
+    // Segment 1: May 31, 2025 → Aug 27, 2025
+    total += segmentInterest(principal, r1, seg1Start, end1);
+
+    // Segment 2: Aug 27, 2025 → Jan 9, 2026
+    if (now.getTime() > seg2Start.getTime()) {
+      total += segmentInterest(principal, r2, seg2Start, end2);
+    }
+
+    // Segment 3: Jan 9, 2026 → present (keeps ticking forever)
+    if (now.getTime() > seg3Start.getTime()) {
+      total += segmentInterest(principal, r3, seg3Start, end3);
+    }
+
+    interestEl.textContent = formatGBP(total);
+    dailyEl.textContent = formatGBP2(principal * r3 / 365);
+  }
+
+  // Run both tickers
+  function tickAll() {
+    tickDelay();
+    tickInterest();
+  }
+
+  tickAll();
+  setInterval(tickAll, 1000);
 })();
 </script>
 
