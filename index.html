@@ -92,12 +92,12 @@ ol {
 }
 
 li {
-  margin-bottom: 14px;
+  margin-bottom: 16px;
   font-size: 16px;
   font-weight: 650;
 }
 
-/* Interest card (embedded under bullet 2) */
+/* Interest card under bullet 2 */
 .interest-card {
   margin-top: 14px;
   border: 2px solid #111;
@@ -139,7 +139,6 @@ li {
   This counter runs continuously. Every second on it represents further delay.
 </div>
 
-<!-- Detail list -->
 <div class="details">
   <h2>Until Nicola responds:</h2>
 
@@ -148,39 +147,33 @@ li {
   </div>
 
   <ol>
-    <li>
-      No payments can be made to Abacus, until Harold Benjamin are instructed by Nicola to seek the tax advice they need from Dutta International.
-    </li>
 
     <li>
-      The estate cannot receive urgent advice from Dutta International on whether an interim payment to HMRC should be made. Interest meanwhile is accruing on that IHT balance daily at 7.75%.
+      The estate cannot receive urgent tax advice from Dutta International on IHT and interim payments to the HMRC. Meanwhile, the estate is accruing interest on the IHT balance at a punitive rate.
 
-      <!-- Interest calculator placed directly under bullet 2 -->
       <div class="interest-card">
         <div class="interest-title">
-          Interest accruing on unpaid inheritance tax at £53.08 per day (7.75%)
+          Interest accruing on unpaid inheritance tax at £53.10 per day (7.75%)
         </div>
         <p class="interest-big" id="interestTotal">£0.00</p>
       </div>
     </li>
 
-    <li>The Falcon Oil Shares cannot be sold.</li>
-
-    <li>No further condominium expenses can be paid.</li>
-
     <li>
-      No progress can be made whatsoever on registering the estate with the HMRC's Trust Registration Service.
-      This is something Nicola has been demanding from Dutta International, while at the same time, refusing to allow Harold Benjamin to engage them to do it.
+      The estate is obliged to register the estate with the HMRC's Trust Registration Service. Despite being aware of this, Nicola is refusing to engage Dutta International to make the registration. HMRC can impose a £5,000 fine on trustees for failing to do this (and investigate the estate).
     </li>
 
-    <li>Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.</li>
+    <li>
+      Tax advice needed from Dutta International on the Irish ARF held by Goodbody is being held up until Nicola decides to engage Dutta International.
+    </li>
+
   </ol>
 </div>
 
 <script>
 (function () {
-  // ---------- Delay counter ----------
-  // June 24, 2025 at 00:00:00 local time
+
+  // Delay counter start: June 24, 2025
   var delayStart = new Date(2025, 5, 24, 0, 0, 0);
   var delayEl = document.getElementById('delayCounter');
 
@@ -197,7 +190,7 @@ li {
     var remainder = totalSeconds % 86400;
 
     var hours = Math.floor(remainder / 3600);
-    remainder = remainder % 3600;
+    remainder %= 3600;
 
     var minutes = Math.floor(remainder / 60);
     var seconds = remainder % 60;
@@ -209,21 +202,19 @@ li {
       "<span class='pulse'>" + pad2(seconds) + "</span>";
   }
 
-  // ---------- Interest counter (simple daily; smooth per-second) ----------
-  var principal = 250000; // GBP
+  // Interest calculation (simple daily)
+  var principal = 250000;
   var interestEl = document.getElementById('interestTotal');
 
-  // APR schedule (rate changes effective at START of these dates, local time)
-  var seg1Start = new Date(2025, 4, 31, 0, 0, 0); // May 31, 2025
-  var seg2Start = new Date(2025, 7, 27, 0, 0, 0); // Aug 27, 2025
-  var seg3Start = new Date(2026, 0, 9, 0, 0, 0);  // Jan 9, 2026
+  var seg1Start = new Date(2025, 4, 31, 0, 0, 0);
+  var seg2Start = new Date(2025, 7, 27, 0, 0, 0);
+  var seg3Start = new Date(2026, 0, 9, 0, 0, 0);
 
   var r1 = 0.085;
   var r2 = 0.08;
   var r3 = 0.0775;
 
-  var SECONDS_PER_DAY = 24 * 60 * 60;
-  var SECONDS_PER_YEAR = 365 * SECONDS_PER_DAY; // simple APR assumption
+  var SECONDS_PER_YEAR = 365 * 24 * 60 * 60;
 
   function formatGBP(amount) {
     return new Intl.NumberFormat('en-GB', {
@@ -235,37 +226,25 @@ li {
   }
 
   function segmentInterest(P, rate, start, end) {
-    var elapsedSeconds = (end.getTime() - start.getTime()) / 1000;
+    var elapsedSeconds = (end - start) / 1000;
     if (elapsedSeconds <= 0) return 0;
     return P * rate * (elapsedSeconds / SECONDS_PER_YEAR);
   }
 
   function tickInterest() {
     var now = new Date();
-
-    if (now.getTime() <= seg1Start.getTime()) {
-      interestEl.textContent = formatGBP(0);
-      return;
-    }
-
-    var end1 = new Date(Math.min(now.getTime(), seg2Start.getTime()));
-    var end2 = new Date(Math.min(now.getTime(), seg3Start.getTime()));
-    var end3 = now;
-
     var total = 0;
 
-    // Segment 1
+    var end1 = new Date(Math.min(now, seg2Start));
+    var end2 = new Date(Math.min(now, seg3Start));
+
     total += segmentInterest(principal, r1, seg1Start, end1);
 
-    // Segment 2
-    if (now.getTime() > seg2Start.getTime()) {
+    if (now > seg2Start)
       total += segmentInterest(principal, r2, seg2Start, end2);
-    }
 
-    // Segment 3 (keeps ticking)
-    if (now.getTime() > seg3Start.getTime()) {
-      total += segmentInterest(principal, r3, seg3Start, end3);
-    }
+    if (now > seg3Start)
+      total += segmentInterest(principal, r3, seg3Start, now);
 
     interestEl.textContent = formatGBP(total);
   }
@@ -277,6 +256,7 @@ li {
 
   tickAll();
   setInterval(tickAll, 1000);
+
 })();
 </script>
 
